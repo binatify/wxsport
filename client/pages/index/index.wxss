@@ -1,0 +1,167 @@
+/**index.wxss**/
+.banner-info {
+  display: flex;
+  width: 100%;
+  height: 500rpx;
+  overflow: hidden;
+  border-bottom: 3rpx solid #09BB07;
+}
+
+.banner-info image {
+  width: 100%;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  margin-top:-50rpx;
+}
+
+.daily-step__continer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.daily-step__button {
+  padding:0 100rpx;
+  line-height: 2.2;
+}
+
+
+.daily-step__text {
+  margin-top: 40rpx;
+  font-size: 26rpx;
+  color: #09BB07;
+}
+
+.daily-step__text .font-yellow {
+  font-size: 26rpx;
+  color: #F5A623;
+}
+
+.rank-container {
+  width: 85%;
+  margin-top: 20rpx;
+  padding-bottom: 40rpx;
+  padding: 5rpx 30rpx;
+}
+
+.rank-header {
+  height: 50rpx;
+  position: relative;
+}
+
+.rank-header__line {
+  border-bottom: 3rpx solid #09BB07;
+}
+
+.rank-header__text {
+  position: absolute;
+  top:-20rpx;
+  width: 38%;
+  background-color: #f4f4f4;
+  left: 31%;
+  text-align: center;
+  color: #09BB07;
+  font-size: 18px;
+}
+
+.rank-item__left {
+  width: 60%;
+  display: inline-block;
+  height: 100%;
+}
+
+.rank-item__right {
+  width: 40%;
+  display: inline-block;
+  height: 100%;
+  text-align: right;
+  position: relative;
+}
+
+.rank-item__number {
+  position: absolute;
+  font-size: 24px;
+  right: 15rpx;
+}
+
+.rank-item__gold {
+  color: #F8E71C;
+}
+
+.rank-item__sliver {
+  color: #FFFFFF;
+}
+.rank-item__copper {
+  color: #F5A623;
+}
+
+.rank-item {
+  position: relative;
+  height: 100rpx;
+  line-height:94rpx;
+  border-bottom:1px solid #ddd;
+  padding: 10rpx 30rpx;
+}
+
+.rank-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 8rpx;
+}
+
+.rank-item__nickname {
+  position: absolute;
+  top: -20rpx;
+  left: 140rpx;
+  color: #4A4A4A;
+}
+
+.rank-item__step {
+  position: absolute;
+  left: 140rpx;
+  top: 30rpx;
+  font-size: 12px;
+  color: #4A4A4A;
+}
+
+.rank-item__step .font-green {
+  font-size: 26rpx;
+  color: #09BB07;
+}
+
+.modal-header {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+}
+
+.modal-header__cancel {
+  padding:5px 10px;
+  font-size: 20px;
+  color: #9B9B9B;
+}
+
+.modal-body {
+  text-align: center;
+  color: #F5A623;
+  line-height: 30px;
+}
+
+.modal-title {
+  font-size: 24px;
+}

@@ -1,0 +1,81 @@
+<!--index.wxml-->
+<view class="container sport-container">
+  <!--banner info-->
+  <view class="banner-info">
+    <image src="{{banner.bg}}" class="banner-info__image"></image>
+  </view>
+  <!--banner info-->
+  <!--user info-->
+  <view class="userinfo">
+    <!-- <image src="{{userInfo.avatarUrl}}" class="userinfo-avatar"></image> -->
+  </view>
+  <!--user info-->
+  <!--daily step-->
+  <view class="daily-step">
+    <view class="daily-step__continer">
+      <button type="primary" class="daily-step__button" bindtap="onSubmit">马上捐步</button>
+      <view class="daily-step__text small">
+        满 <label class="font-yellow"> 2000 </label> 
+        步即可捐赠步数
+      </view>
+    </view>
+  </view>
+  <!--daily step-->
+  <!--rank-->
+  <view class="rank rank-container">
+    <view class="rank-header">
+      <view class="rank-header__line"></view>
+      <view class="rank-header__text">达人榜单</view>
+    </view>
+    <view class="rank-list">
+      <view class="rank-item">
+        <view class="rank-item__left">
+          <image src="{{userInfo.avatarUrl}}" class="rank-avatar"></image>
+          <label class="rank-item__nickname">{{userInfo.nickName}}</label>
+          <label class="rank-item__step">今日捐赠 <text class="font-green">2000</text> 步</label>
+        </view>
+        <view class="rank-item__right">
+           <label class="rank-item__number rank-item__gold">1</label>
+        </view>
+      </view>
+
+      <view class="rank-item">
+        <view class="rank-item__left">
+          <image src="{{userInfo.avatarUrl}}" class="rank-avatar"></image>
+          <label class="rank-item__nickname">{{userInfo.nickName}}</label>
+          <label class="rank-item__step">今日捐赠 <text class="font-green">2000</text> 步</label>
+        </view>
+
+        <view class="rank-item__right">
+          <label class="rank-item__number rank-item__sliver">2</label>
+        </view>
+      </view>
+
+      <view class="rank-item">
+        <view class="rank-item__left">
+          <image src="{{userInfo.avatarUrl}}" class="rank-avatar"></image>
+          <label class="rank-item__nickname">{{userInfo.nickName}}</label>
+          <label class="rank-item__step">今日捐赠 <text class="font-green">2000</text> 步</label>
+        </view>
+
+        <view class="rank-item__right">
+          <label class="rank-item__number rank-item__copper">3</label>
+        </view>
+      </view>
+    </view>
+    <view class="rank-footer"></view>
+  </view>
+  <!--rank-->
+
+  <modal class="modal" hidden="{{modalFlag}}" no-cancel confirmText="">  
+    <view class="modal-header">
+      <label class="modal-header__cancel" bindtap="onModalHide">X</label>
+    </view>
+    <view class="modal-body">   
+      <view class="modal-title">{{banner.name}}提醒您</view>
+      <view>今日捐赠 3000 步</view>
+      <view>累计捐赠 30000 步</view>
+      <view>打败全国 97% 对手</view>
+    </view>
+  </modal>  
+</view>
