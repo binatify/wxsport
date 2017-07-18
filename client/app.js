@@ -8,8 +8,18 @@ App({
 
     wx.login({
       success: function (res) {
+        var app = getApp();
         if (res.code) {
-          //发起网络请求
+          wx.request({
+            url: app.makeRequestUrl("/api/session/login"),
+            method: "POST",
+            data: {
+              code: res.code
+            },
+            success: function (res) {
+              app.globalData.cookie = res.header["Set-Cookie"];
+            }
+          })
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
         }
@@ -32,8 +42,13 @@ App({
       })
     }
   },
+  
+  makeRequestUrl: function(endpoint){
+    return "http://localhost:3000" + endpoint
+  },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    cookie: null
   }
 })
