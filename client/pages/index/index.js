@@ -5,7 +5,7 @@ Page({
   data: {
     activity: {
       title: "北极自由光",
-      image: "../../images/banner.png",
+      image: "../../images/banner.png"
     },
     modal: {
       hidden: true,
@@ -18,16 +18,19 @@ Page({
 
   onLoad: function () {
     var that = this
-
     app.getUserCookie(function(cookie) {
       // 更新用户信息
       that.updateUserInfo();
+    });
+  },
+
+  onShow: function () {
+    var that = this
+    app.getUserCookie(function (cookie) {
       // 获取 activity 信息
       that.getActivityInfo();
     });
   },
-
-
 
   // 更新用户基础信息
   updateUserInfo: function(e) {
@@ -142,6 +145,15 @@ Page({
         typo: null,
         data: null,
         errMessage: null,
+      }
+    });
+  },
+
+  onShowBannerInfo: function(e) {
+    this.setData({
+      modal: {
+        hidden: false,
+        typo: 4,
       }
     });
   }

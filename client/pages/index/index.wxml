@@ -2,6 +2,7 @@
 <view class="container sport-container">
   <!--banner info-->
   <view class="banner-info">
+    <label class="banner-btn" bindtap="onShowBannerInfo">商家信息</label>
     <image src="{{activity.image}}" class="banner-info__image"></image>
   </view>
   <!--banner info-->
@@ -58,9 +59,11 @@
       <label class="modal-header__cancel" bindtap="onModalHide">X</label>
     </view>
     <view class="modal-body">   
-      <view class="modal-title">{{banner.name}}提醒您</view>
+       <block wx:if="{{modal.typo != 4}}">
+        <view class="modal-title">{{activity.name}}提醒您</view>
+      </block> 
       <view wx:if="{{modal.typo == 0}}"> 
-        <view>今日捐赠 {{modal.data.step}} 步</view>
+        <view>今日捐赠 {{modal.data.step}} 步, 折合{{modal.data.exchange_money}}</view>
         <view>累计捐赠 {{modal.data.total}} 步</view>
         <view>打败全国 {{modal.data.defeat}} 对手</view>
       </view>
@@ -72,6 +75,11 @@
       </view>
       <view wx:elif="{{modal.typo == 3}}"> 
         系统繁忙，请稍后重试！
+      </view>
+      <view wx:elif="{{modal.typo == 4}}" class="banner-info__description"> 
+        <block wx:for="{{activity.description}}" wx:key="unique" wx:for-index="idx">
+          <view>{{item}}</view>
+        </block>
       </view>
     </view>
   </modal>  

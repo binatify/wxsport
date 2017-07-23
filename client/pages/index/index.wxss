@@ -5,10 +5,32 @@
   height: 500rpx;
   overflow: hidden;
   border-bottom: 3rpx solid #09BB07;
+  position: relative;
 }
 
 .banner-info image {
   width: 100%;
+}
+
+.banner-btn {
+  background-color:#000;
+  text-align:center;
+  border-radius:5px;
+  padding:5px 4px;
+  font-size:12px;
+  color:#fff;
+  opacity:0.6;
+  width:60px;
+  right:10px;
+  position:absolute;
+  bottom:10px;
+}
+
+.banner-info__description {
+  color: #000;
+  text-align: left;
+  max-height:300px;
+  overflow:scroll;
 }
 
 .userinfo {
