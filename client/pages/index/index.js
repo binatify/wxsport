@@ -3,7 +3,6 @@
 var app = getApp()
 Page({
   data: {
-    userInfo: {},
     activity: {
       title: "北极自由光",
       image: "../../images/banner.png",
@@ -13,17 +12,27 @@ Page({
       typo: null,
       errMessage: null,
       data: {},
-    }
+    },
+    topDonates: [],
   },
+
   onLoad: function () {
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
 
+    app.getUserCookie(function(cookie) {
+      // 更新用户信息
+      that.updateUserInfo();
+      // 获取 activity 信息
+      that.getActivityInfo();
+    });
+  },
+
+
+
+  // 更新用户基础信息
+  updateUserInfo: function(e) {
+    app.getUserInfo(function (userInfo) {
+      //更新数据
       wx.request({
         url: app.makeRequestUrl("/api/user"),
         method: "POST",
@@ -35,23 +44,48 @@ Page({
         }
       })
     });
+  },
 
-    //获取 activity 信息
+  // 获取 activity 信息
+  getActivityInfo: function() {
+    var that = this;
     wx.request({
       url: app.makeRequestUrl("/api/activity"),
       method: "GET",
       header: {
         'Cookie': app.globalData.cookie,
       },
-      success: function(res) {
+      success: function (res) {
         that.setData({
           activity: res.data
         });
         wx.setNavigationBarTitle({
           title: res.data.title
         });
+
+        that.getTop10Donates(res.data.id);
       }
     })
+  },
+
+  //获取 top 10 donates 信息
+  getTop10Donates: function(activityId) {
+    var that = this;
+    wx.request({
+      url: app.makeRequestUrl("/api/sports"),
+      method: "GET",
+      header: {
+        'Cookie': app.globalData.cookie,
+      },
+      data: {
+        activity_id: activityId,
+      },
+      success: function (res) {
+        that.setData({
+          topDonates: res.data
+        });
+      }
+    }) 
   },
 
   onSubmit: function(e) {
@@ -74,10 +108,15 @@ Page({
               hidden: false,
               data: res.data,
             }
+
             if (res.statusCode == 200) {
               modalStatus.typo = 0 
-            } else {
+            } else if (res.statusCode == 408){
               modalStatus.typo = 1
+            } else if (res.statusCode == 400){
+              modalStatus.typo = 2
+            } else {
+              modalStatus.typo = 3
             }
 
             that.setData({

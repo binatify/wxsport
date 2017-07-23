@@ -28,40 +28,26 @@
       <view class="rank-header__text">达人榜单</view>
     </view>
     <view class="rank-list">
-      <view class="rank-item">
-        <view class="rank-item__left">
-          <image src="{{userInfo.avatarUrl}}" class="rank-avatar"></image>
-          <label class="rank-item__nickname">{{userInfo.nickName}}</label>
-          <label class="rank-item__step">今日捐赠 <text class="font-green">2000</text> 步</label>
+      <block wx:for="{{topDonates}}" wx:key="unique" wx:for-index="idx">
+        <view class="rank-item">
+          <view class="rank-item__left">
+            <image src="{{item.avatar_url}}" class="rank-avatar"></image>
+            <label class="rank-item__nickname">{{item.nickname}}</label>
+            <label class="rank-item__step">今日捐赠 <text class="font-green">{{item.step}}</text> 步</label>
+          </view>
+          <view class="rank-item__right">
+            <block wx:if="{{idx == 0}}">
+              <image src="../../images/gold-medal.png"></image>
+            </block>
+            <block wx:elif="{{idx == 1}}">
+              <image src="../../images/sliver-medal.png"></image>
+            </block>
+            <block wx:elif="{{idx == 2}}">
+              <image src="../../images/copper-medal.png"></image>
+            </block>
+          </view>
         </view>
-        <view class="rank-item__right">
-           <label class="rank-item__number rank-item__gold">1</label>
-        </view>
-      </view>
-
-      <view class="rank-item">
-        <view class="rank-item__left">
-          <image src="{{userInfo.avatarUrl}}" class="rank-avatar"></image>
-          <label class="rank-item__nickname">{{userInfo.nickName}}</label>
-          <label class="rank-item__step">今日捐赠 <text class="font-green">2000</text> 步</label>
-        </view>
-
-        <view class="rank-item__right">
-          <label class="rank-item__number rank-item__sliver">2</label>
-        </view>
-      </view>
-
-      <view class="rank-item">
-        <view class="rank-item__left">
-          <image src="{{userInfo.avatarUrl}}" class="rank-avatar"></image>
-          <label class="rank-item__nickname">{{userInfo.nickName}}</label>
-          <label class="rank-item__step">今日捐赠 <text class="font-green">2000</text> 步</label>
-        </view>
-
-        <view class="rank-item__right">
-          <label class="rank-item__number rank-item__copper">3</label>
-        </view>
-      </view>
+      </block>
     </view>
     <view class="rank-footer"></view>
   </view>
@@ -76,10 +62,16 @@
       <view wx:if="{{modal.typo == 0}}"> 
         <view>今日捐赠 {{modal.data.step}} 步</view>
         <view>累计捐赠 {{modal.data.total}} 步</view>
-        <view>打败全国 {{modal.data.defeat}}% 对手</view>
+        <view>打败全国 {{modal.data.defeat}} 对手</view>
       </view>
       <view wx:elif="{{modal.typo == 1}}"> 
-        今天已运动 <label>{{modal.data.step}}</label>步，还差 {{modal.data.left}} 步可捐赠！
+        今天已运动 <label>{{modal.data.step}}</label> 步，还差 {{modal.data.left}} 步可捐赠！
+      </view>
+      <view wx:elif="{{modal.typo == 2}}"> 
+        每日只能捐赠一次，确认是否重复捐赠！
+      </view>
+      <view wx:elif="{{modal.typo == 3}}"> 
+        系统繁忙，请稍后重试！
       </view>
     </view>
   </modal>  
