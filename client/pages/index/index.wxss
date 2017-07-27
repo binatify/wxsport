@@ -35,6 +35,10 @@
   overflow:scroll;
 }
 
+.banner-info__description view {
+  margin-bottom: 15px;
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;

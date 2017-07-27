@@ -4,7 +4,7 @@ var app = getApp()
 Page({
   data: {
     activity: {
-      title: "北极自由光",
+      title: "行走的力量",
       image: "../../images/banner.png"
     },
     modal: {
