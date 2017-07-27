@@ -2,7 +2,7 @@
 <view class="container sport-container">
   <!--banner info-->
   <view class="banner-info">
-    <label class="banner-btn" bindtap="onShowBannerInfo">商家信息</label>
+    <label class="banner-btn" bindtap="onShowBannerInfo">活动简介</label>
     <image src="{{activity.image}}" class="banner-info__image"></image>
   </view>
   <!--banner info-->
