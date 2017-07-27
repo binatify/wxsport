@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
 var app = getApp()
+var lastSendTime = new Date().getTime()
+
 Page({
   data: {
     activity: {
@@ -92,6 +94,18 @@ Page({
   },
 
   onSubmit: function(e) {
+    let currentTime = new Date().getTime();
+    if (currentTime - lastSendTime < 1500) {
+      return null;
+    }
+    lastSendTime = currentTime;
+
+    wx.showToast({
+      title: '正在提交数据，请勿重复点击',
+      icon: 'success',
+      duration: 800
+    });
+
     var that = this;
     wx.getWeRunData({
       success(res) {
