@@ -2,6 +2,7 @@
 //获取应用实例
 var app = getApp()
 var lastSendTime = new Date().getTime()
+const tipsDuration = 800
 
 Page({
   data: {
@@ -103,7 +104,8 @@ Page({
     wx.showToast({
       title: '正在提交数据，请勿重复点击',
       icon: 'success',
-      duration: 800
+      image: '../../images/checked.png',
+      duration: tipsDuration
     });
 
     var that = this;
@@ -135,17 +137,22 @@ Page({
             } else {
               modalStatus.typo = 3
             }
+            var costTime = new Date().getTime() - currentTime;
+            if (costTime < 0) {
+              costTime = 400;
+            }
 
-            that.setData({
-              modal: modalStatus
-            });
+            setTimeout(function () {
+              that.setData({
+                modal: modalStatus
+              });}, tipsDuration - costTime + 300);
           }
         })
       },
       fail(data) {
         wx.showToast({
           title: '请确认已授权获取运动数据',
-          icon: "warn",
+          icon: "success",
           duration: 1000
         })
       }
