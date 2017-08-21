@@ -125,7 +125,7 @@ Page({
           success: function(res) {
             var modalStatus = {
               hidden: false,
-              data: res.data,
+              data: res.data
             }
 
             if (res.statusCode == 200) {
@@ -136,6 +136,7 @@ Page({
               modalStatus.typo = 2
             } else {
               modalStatus.typo = 3
+              modalStatus.message = res.data.message
             }
             var costTime = new Date().getTime() - currentTime;
             if (costTime < 0) {

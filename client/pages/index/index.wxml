@@ -74,7 +74,12 @@
         每日只能捐赠一次，确认是否重复捐赠！
       </view>
       <view wx:elif="{{modal.typo == 3}}"> 
-        系统繁忙，请稍后重试！
+        <block wx:if="{{modal.message}}">
+          {{modal.message}}
+        </block>
+        <block wx:else>
+          系统繁忙，请稍后重试！
+        </block>
       </view>
       <view wx:elif="{{modal.typo == 4}}" class="banner-info__description"> 
         <block wx:for="{{activity.description}}" wx:key="unique" wx:for-index="idx">
