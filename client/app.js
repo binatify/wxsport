@@ -51,8 +51,7 @@ App({
   },
 
   makeRequestUrl: function(endpoint){
-    return "https://sport1.zuoyouba.com" + endpoint
-    // return "http://localhost:3000" + endpoint
+    return "http://localhost:3000" + endpoint
   },
 
   globalData: {
